@@ -5,6 +5,8 @@ $request = "SELECT * FROM wf3zoo.ANIMAL WHERE id =" . $_GET["id"];
 $response = $bdd->query($request);
 $animals = $response->fetch(PDO::FETCH_ASSOC);
 
+include './partials/function.php';
+
 ?>
 
 <!doctype html>
@@ -36,17 +38,13 @@ $animals = $response->fetch(PDO::FETCH_ASSOC);
 
         <div class="album py-5 bg-light">
             <div class="container">
-                <?php
-                $DOB_timestamp = strtotime($animals['date_de_naissance']);
-                $DOB = date("j F Y", $DOB_timestamp);
-                ?>
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
                             <h2><?= $animals['nom'] ?></h2>
                             <p>
                                 <strong>Espèce</strong><br>
-                                <?= $animals['espece'] ?> (sexe: <?= $animals['sexe'] ?>)
+                                <?= $animals['espece'] ?> (sexe: <?= gender($animals['sexe']) ?>)
                             </p>
                             <p>
                                 <strong>Morphologie</strong>
@@ -58,17 +56,17 @@ $animals = $response->fetch(PDO::FETCH_ASSOC);
                             <p>
                                 <strong>Origine</strong>
                                 <ul>
-                                    <li>Né le <?= $DOB ?></li>
+                                    <li>Né le <?= DOB($animals['date_de_naissance']) ?></li>
                                     <li><strong>Pays de naissance: </strong><?= $animals['pays_origine'] ?></li>
                                 </ul>
                             </p>
                             <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-                            <div class="d-flex justify-content-between align-items-center">
+                            <!-- <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a href="http://localhost:8888/wf3zoo/show.php?id=<?= $animals['id'] ?>" <button type="button" class="btn btn-sm btn-outline-secondary">Voir la fiche de l'animal</button></a>
                                 </div>
                                 <small class="text-muted">9 mins</small>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
