@@ -49,8 +49,8 @@ include './partials/function.php';
                             <p>
                                 <strong>Morphologie</strong>
                                 <ul>
-                                    <li>Poids: <?= $animals['poids'] ?></li>
-                                    <li>Taille: <?= $animals['taille'] ?></li>
+                                    <li>Poids: <?= $animals['poids'] ?> kg</li>
+                                    <li>Taille: <?= $animals['taille'] ?> mètres</li>
                                 </ul>
                             </p>
                             <p>

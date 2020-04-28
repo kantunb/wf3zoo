@@ -18,25 +18,27 @@
             <div class="row">
                 <div class="form-group">
                     <label for="">Ajouter un animal</label>
-                    <small id="espece" class="form-text text-muted">Espèce</small>
-                    <input type="text" class="form-control" name="espece" aria-describedby="espece">
-                    <small id="nom" class="form-text text-muted">Nom</small>
-                    <input type="text" class="form-control" name="nom" aria-describedby="nom">
-                    <small id="taille" class="form-text text-muted">Taille (en mètres)</small>
-                    <input type="number" class="form-control" name="taille" aria-describedby="taille">
-                    <small id="date_de_naissance" class="form-text text-muted">Date de naissance</small>
-                    <input type="date" class="form-control" name="date_de_naissance" aria-describedby="date de naissance">
-                    <small id="pays_origine" class="form-text text-muted">Pays d'origine</small>
-                    <input type="text" class="form-control" name="pays_origine" aria-describedby="pays d'origine">
-                    <small id="sexe" class="form-text text-muted">Sexe</small>
-                    <select class="form-control" name="sexe" aria-describedby="sexe">
-                        <option value="">--Please choose an option--</option>
-                        <option value=2>Femelle</option>
-                        <option value=1>Male</option>
-                    </select>
-
-
-
+                    <form action="./create.php" method="POST">
+                        <label id="espece" class="form-text text-muted">Espèce</label>
+                        <input type="text" class="form-control" name="espece" aria-describedby="espece">
+                        <label id="nom" class="form-text text-muted">Nom</label>
+                        <input type="text" class="form-control" name="nom" aria-describedby="nom">
+                        <label id="taille" class="form-text text-muted">Taille (en m)</label>
+                        <input type="number" class="form-control" name="taille" aria-describedby="taille">
+                        <label id="poids" class="form-text text-muted">Poids (en kg)</label>
+                        <input type="number" class="form-control" name="poids" aria-describedby="taille">
+                        <label id="date_de_naissance" class="form-text text-muted">Date de naissance</label>
+                        <input type="date" class="form-control" name="date_de_naissance" aria-describedby="date de naissance">
+                        <label id="pays_origine" class="form-text text-muted">Pays d'origine</label>
+                        <input type="text" class="form-control" name="pays_origine" aria-describedby="pays d'origine">
+                        <label id="sexe" class="form-text text-muted">Sexe</label>
+                        <select class="form-control" name="sexe" aria-describedby="sexe">
+                            <option value="">--Please choose an option--</option>
+                            <option value=2>Femelle</option>
+                            <option value=1>Male</option>
+                        </select>
+                        <input class="btn btn-primary mt-4" type="submit" value="Créer un animal">
+                    </form>
                 </div>
             </div>
         </div>
