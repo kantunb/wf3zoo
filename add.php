@@ -20,7 +20,7 @@
                     <label for="">Ajouter un animal</label>
                     <form action="./create.php" method="POST">
                         <label id="espece" class="form-text text-muted">Espèce</label>
-                        <input type="text" class="form-control" name="espece" aria-describedby="espece">
+                        <input type="text" class="form-control" name="espece" aria-describedby="espece" requi>
                         <label id="nom" class="form-text text-muted">Nom</label>
                         <input type="text" class="form-control" name="nom" aria-describedby="nom">
                         <label id="taille" class="form-text text-muted">Taille (en m)</label>

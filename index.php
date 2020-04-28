@@ -5,13 +5,14 @@ $request = "SELECT * FROM ANIMAL";
 $response = $bdd->query($request);
 $animals = $response->fetchAll(PDO::FETCH_ASSOC);
 
-include './partials/function.php';
+setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
+include './partials/function.php';
 
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">

@@ -1,8 +1,11 @@
 <?php
 
 $bdd = new PDO('mysql:host=localhost;dbname=wf3zoo;charset=utf8;port=8889', 'root', 'root');
-$request = "SELECT * FROM wf3zoo.ANIMAL WHERE id =" . $_GET["id"];
-$response = $bdd->query($request);
+$request = "SELECT * FROM wf3zoo.ANIMAL WHERE id = :id";
+$response = $bdd->prepare($request);
+$response->execute([
+    ':id' => $_GET['id']
+]);
 $animals = $response->fetch(PDO::FETCH_ASSOC);
 
 include './partials/function.php';

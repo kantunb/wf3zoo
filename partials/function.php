@@ -1,5 +1,6 @@
 <?php
 
+
 $sexe = null;
 function gender($sexe) {
     if ($sexe == 1) {
@@ -16,7 +17,7 @@ function gender($sexe) {
 
 $DOB_convert = '';
 function DOB($DOB) {
-    $DOB_convert = date("j F Y", strtotime($DOB));
+    $DOB_convert = strftime("%e %B %Y", strtotime($DOB));
     return $DOB_convert;
 }
 
