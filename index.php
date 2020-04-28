@@ -1,8 +1,23 @@
 <?php
+
 $bdd = new PDO('mysql:host=localhost;dbname=wf3zoo;charset=utf8;port=8889', 'root', 'root');
 $request = "SELECT * FROM ANIMAL";
 $response = $bdd->query($request);
 $animals = $response->fetchAll(PDO::FETCH_ASSOC);
+
+$sexe = null;
+function gender($sexe) {
+    if ($sexe == 1) {
+        $sexe = "male";
+    }
+    elseif ($sexe == 2) {
+        $sexe = "femelle";
+    }
+    else {
+        $sexe = "non defini";
+    }
+    return $sexe;
+}
 
 ?>
 
@@ -40,13 +55,17 @@ $animals = $response->fetchAll(PDO::FETCH_ASSOC);
 
                     <?php
                     foreach ($animals as $animal) : ?>
+                    <?php 
+                    $DOB_timestamp = strtotime($animal['date_de_naissance']);
+                    $DOB = date("j F Y", $DOB_timestamp);
+                    ?>
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
                                 <div class="card-body">
                                     <h2><?= $animal['nom'] ?></h2>
                                     <p>
                                         <strong>Espèce</strong><br>
-                                        <?= $animal['espece'] ?> (sexe: <?= $animal['sexe'] ?>)
+                                        <?= $animal['espece'] ?> (sexe: <?= gender($animal['sexe']) ?>)
                                     </p>
                                     <p>
                                         <strong>Morphologie</strong>
@@ -58,7 +77,7 @@ $animals = $response->fetchAll(PDO::FETCH_ASSOC);
                                     <p>
                                         <strong>Origine</strong>
                                         <ul>
-                                            <li>Né le <?= $animal['date_de_naissance'] ?></li>
+                                            <li>Né le <?= $DOB ?></li>
                                             <li><strong>Pays de naissance: </strong><?= $animal['pays_origine'] ?></li>
                                         </ul>
                                     </p>

@@ -1,8 +1,9 @@
 <?php
+
 $bdd = new PDO('mysql:host=localhost;dbname=wf3zoo;charset=utf8;port=8889', 'root', 'root');
-$request = "SELECT * FROM ANIMAL";
+$request = "SELECT * FROM wf3zoo.ANIMAL WHERE id =" . $_GET["id"];
 $response = $bdd->query($request);
-$animals = $response->fetchAll(PDO::FETCH_ASSOC);
+$animals = $response->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -35,26 +36,41 @@ $animals = $response->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="album py-5 bg-light">
             <div class="container">
-
-                <div class="row">
-
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
+                <?php
+                $DOB_timestamp = strtotime($animals['date_de_naissance']);
+                $DOB = date("j F Y", $DOB_timestamp);
+                ?>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                            <h2><?= $animals['nom'] ?></h2>
+                            <p>
+                                <strong>Espèce</strong><br>
+                                <?= $animals['espece'] ?> (sexe: <?= $animals['sexe'] ?>)
+                            </p>
+                            <p>
+                                <strong>Morphologie</strong>
+                                <ul>
+                                    <li>Poids: <?= $animals['poids'] ?></li>
+                                    <li>Taille: <?= $animals['taille'] ?></li>
+                                </ul>
+                            </p>
+                            <p>
+                                <strong>Origine</strong>
+                                <ul>
+                                    <li>Né le <?= $DOB ?></li>
+                                    <li><strong>Pays de naissance: </strong><?= $animals['pays_origine'] ?></li>
+                                </ul>
+                            </p>
+                            <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="http://localhost:8888/wf3zoo/show.php?id=<?= $animals['id'] ?>" <button type="button" class="btn btn-sm btn-outline-secondary">Voir la fiche de l'animal</button></a>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
