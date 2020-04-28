@@ -5,19 +5,8 @@ $request = "SELECT * FROM ANIMAL";
 $response = $bdd->query($request);
 $animals = $response->fetchAll(PDO::FETCH_ASSOC);
 
-$sexe = null;
-function gender($sexe) {
-    if ($sexe == 1) {
-        $sexe = "male";
-    }
-    elseif ($sexe == 2) {
-        $sexe = "femelle";
-    }
-    else {
-        $sexe = "non defini";
-    }
-    return $sexe;
-}
+include './partials/function.php';
+
 
 ?>
 
@@ -55,10 +44,6 @@ function gender($sexe) {
 
                     <?php
                     foreach ($animals as $animal) : ?>
-                    <?php 
-                    $DOB_timestamp = strtotime($animal['date_de_naissance']);
-                    $DOB = date("j F Y", $DOB_timestamp);
-                    ?>
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
                                 <div class="card-body">
@@ -77,7 +62,7 @@ function gender($sexe) {
                                     <p>
                                         <strong>Origine</strong>
                                         <ul>
-                                            <li>Né le <?= $DOB ?></li>
+                                            <li>Né le <?= DOB($animal['date_de_naissance']) ?></li>
                                             <li><strong>Pays de naissance: </strong><?= $animal['pays_origine'] ?></li>
                                         </ul>
                                     </p>
