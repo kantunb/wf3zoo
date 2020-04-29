@@ -38,6 +38,8 @@ include './partials/function.php';
                             <option value=2>Femelle</option>
                             <option value=1>Male</option>
                         </select>
+                        <label for="image">Télécharger une photo de l'animal</label>
+                        <input type="file" id="image" name="image" accept="image/png, image/jpeg" class="mt-4"><br>
                         <input class="btn btn-primary mt-4" type="submit" value="Créer un animal"> </form>
                 </div>
             </div>

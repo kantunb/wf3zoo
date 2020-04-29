@@ -20,6 +20,7 @@ include './partials/function.php';
 </head>
 
 <body>
+
     <div class="album py-5 bg-light">
         <div class="container">
 
@@ -41,13 +42,9 @@ include './partials/function.php';
                         <input type="text" class="form-control" name="pays_origine" aria-describedby="pays d'origine" value="<?= $animals['pays_origine'] ?>">
                         <label id="sexe" class="form-text text-muted">Sexe</label>
                         <select class="form-control" name="sexe" aria-describedby="sexe" value="">
-                            <?php if ($animals['sexe'] == 1) : ?>
-                                <option value=2>Femelle</option>
-                                <option value=1 selected>Male</option>
-                            <?php else : ?>
-                                <option value=2 selected>Femelle</option>
-                                <option value=1>Male</option>
-                            <?php endif ?>
+                                <option value=2 <?= ($animals['sexe'] == 2) ? 'selected' : '' ?>>Femelle</option>
+                                <option value=1 <?= ($animals['sexe'] == 1) ? 'selected' : '' ?>>Male</option>
+                                <option value=""<?= ($animals['sexe'] == '') ? 'selected' : '' ?>>--Please choose an option--</option>
                         </select>
                         <input class="btn btn-primary mt-4" type="submit" value="Modifier l'animal"> </form>
                 </div>
