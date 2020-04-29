@@ -1,11 +1,6 @@
 <?php
 
-$bdd = new PDO('mysql:host=localhost;dbname=wf3zoo;charset=utf8;port=8889', 'root', 'root');
-$request = "SELECT * FROM ANIMAL";
-$response = $bdd->query($request);
-$animals = $response->fetchAll(PDO::FETCH_ASSOC);
-
-setlocale(LC_TIME, 'fr_FR.utf8','fra');
+include './partials/dbCall.php';
 
 include './partials/function.php';
 
@@ -15,18 +10,7 @@ include './partials/function.php';
 <html lang="fr">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.6">
-    <title>WF3 Zoo</title>
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <?php include './partials/head.php' ?>
 </head>
 
 <body>
@@ -70,7 +54,13 @@ include './partials/function.php';
                                     <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a href="http://localhost:8888/wf3zoo/show.php?id=<?=$animal['id'] ?>"<button type="button" class="btn btn-sm btn-outline-secondary">Voir la fiche de l'animal</button></a>
+                                            <a href="http://localhost:8888/wf3zoo/show.php?id=<?=$animal['id'] ?>"<button type="button" class="btn btn-sm btn-outline-secondary">Voir</button></a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a href="http://localhost:8888/wf3zoo/edit.php?id=<?=$animal['id'] ?>"<button type="button" class="btn btn-sm btn-outline-secondary">Modifier</button></a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a href="http://localhost:8888/wf3zoo/confirmDelete.php?id=<?=$animal['id'] ?>"<button type="button" class="btn btn-sm btn-outline-secondary">Supprimer</button></a>
                                         </div>
                                         <small class="text-muted">9 mins</small>
                                     </div>
