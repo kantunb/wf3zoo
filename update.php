@@ -16,12 +16,12 @@ $request = "UPDATE ANIMAL SET   espece = :espece,
 $response = $bdd->prepare($request);
 
 $response->execute([
-    'espece'            =>  $_POST['espece'],
-    'nom'               =>  $_POST['nom'],
+    'espece'            =>  ucfirst(strtolower($_POST['espece'])),
+    'nom'               =>  ucfirst(strtolower($_POST['nom'])),
     'taille'            =>  $_POST['taille'],
     'poids'             =>  $_POST['poids'],
     'date_de_naissance' =>  $_POST['date_de_naissance'],
-    'pays_origine'      =>  $_POST['pays_origine'],
+    'pays_origine'      =>  ucfirst(strtolower($_POST['pays_origine'])),
     'sexe'              =>  $_POST['sexe']
 ]);
 

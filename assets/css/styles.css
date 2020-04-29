@@ -47,7 +47,3 @@ footer {
 footer p {
     margin-bottom: .25rem;
 }
-
-h2::first-letter {
-    text-transform: uppercase;
-}
