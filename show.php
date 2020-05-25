@@ -1,4 +1,5 @@
 <?php
+require_once './config.php';
 
 $bdd = new PDO('mysql:host=localhost;dbname=wf3zoo;charset=utf8;port=8889', 'root', 'root');
 $request = "SELECT * FROM wf3zoo.ANIMAL WHERE id = :id";

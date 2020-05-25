@@ -1,8 +1,9 @@
 <?php
-
+require_once './config.php';
 include './partials/dbCall.php';
 
 include './partials/function.php';
+
 
 ?>
 

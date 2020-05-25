@@ -1,8 +1,8 @@
 <?php 
-
+require_once './config.php';
 var_dump($_POST);
 
-$bdd = new PDO('mysql:host=localhost;dbname=wf3zoo;charset=utf8;port=8889', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=wf3zoo;charset=utf8;port=8889', 'root', 'root', [PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
 // $request = "INSERT INTO ANIMAL (`espece`, `nom`, `taille`, `poids`, `date_de_naissance`, `pays_origine`, `sexe`) VALUES ('". $_POST['espece'] . "','" . $_POST['nom'] . "','" . $_POST['taille'] . "','" . $_POST['poids'] . "','" . $_POST['date_de_naissance'] . "','" . $_POST['pays_origine'] . "','" . $_POST['sexe'] . "')";
 
 $request = "INSERT INTO ANIMAL (espece, nom, taille, poids, date_de_naissance, pays_origine, sexe)
@@ -20,9 +20,9 @@ $response->execute([
     'sexe'              =>  $_POST['sexe']
 ]);
 
+var_dump($response->debugDumpParams());
 
 
-
-header('Location: index.php');
+// header('Location: index.php');
 
 ?>
